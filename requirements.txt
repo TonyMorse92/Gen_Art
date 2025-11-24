@@ -1,0 +1,7 @@
+# Notebooks for scratchwork
+notebook
+
+# Packages for data analysis that I will eventually get to
+numpy
+matplotlib
+scipy
