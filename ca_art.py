@@ -29,29 +29,34 @@ all_trip = np.stack([
 
 
 
+#print(f"Data: {data}")
 new_data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"New data: {new_data}")
+#print(f"Data: {data}")
+
+
+
 #print(np.apply_along_axis(rule_index, 0, all_trip))
 #print(f"New data: {new_data}")
 #print("\n\n\n\n")
 #print(all_trip)
 
 ### Try plotting the first few
-binary_data = np.array([
-[0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
-[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
-[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0]
-])
+#binary_data = np.array([
+#[0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
+#[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
+#[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0]
+#])
 
 
-dt = data[np.newaxis, :]
+binary_data = np.array(data, dtype=int)
+binary_data = binary_data[np.newaxis, :]
 
-#binary_data = np.array(data, dtype=int)
-binary_data = np.concatenate((binary_data, dt), axis=0)
+new_data = new_data[np.newaxis, :]
+binary_data = np.concatenate((binary_data, new_data), axis=0)
 
 plt.imshow(binary_data, cmap='Greys')
 plt.axis("off")
 plt.title("Cellular Automata")
 plt.show()
-
-
-
