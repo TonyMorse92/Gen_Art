@@ -21,20 +21,26 @@ def rule_index(state):
 	return int(index)
 
 
-all_trip = np.stack([
-	np.roll(data, 1),
+all_trip = np.stack([np.roll(data, 1),
 	data,
 	np.roll(data, -1)]
 )
 
 
-
 #print(f"Data: {data}")
-new_data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"all_trip: {all_trip}")
 #data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"New data: {new_data}")
 #print(f"Data: {data}")
-
+#all_trip = np.stack([np.roll(data, 1),
+#	data,
+#	np.roll(data, -1)]
+#)
+#print(f"all_trip: {all_trip}")
+#print(f"Data: {data}")
+#new_data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"New : {new_data}")
+#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"Data: {data}")
 
 
 #print(np.apply_along_axis(rule_index, 0, all_trip))
@@ -42,19 +48,38 @@ new_data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
 #print("\n\n\n\n")
 #print(all_trip)
 
-### Try plotting the first few
-#binary_data = np.array([
-#[0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
-#[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
-#[1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0]
-#])
-
 
 binary_data = np.array(data, dtype=int)
 binary_data = binary_data[np.newaxis, :]
+#print(f"Data: {data}")
+#data = data[np.newaxis, :]
+#print(f"Data: {data}")
+#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"Data: {data}")
+#data = data[np.newaxis, :]
+#print(f"Data: {data}")
+#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"Data: {data}")
+#all_trip = np.stack([np.roll(data, 1),
+#	data,
+#	np.roll(data, -1)]
+#)
+#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+#print(f"Data: {data}")
+#binary_data = np.concatenate((binary_data, data), axis=0)
+#binary_data = np.concatenate((binary_data, data), axis=0)
+#binary_data = np.concatenate((binary_data, data), axis=0)
+cnt = 0
+while cnt < 100:
+	data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
+	all_trip = np.stack([np.roll(data, 1),
+		data,
+		np.roll(data, -1)]
+	)
+	data = data[np.newaxis, :]
+	binary_data = np.concatenate((binary_data, data), axis=0)
+	cnt+=1
 
-new_data = new_data[np.newaxis, :]
-binary_data = np.concatenate((binary_data, new_data), axis=0)
 
 plt.imshow(binary_data, cmap='Greys')
 plt.axis("off")
