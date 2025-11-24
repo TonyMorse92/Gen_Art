@@ -26,49 +26,11 @@ all_trip = np.stack([np.roll(data, 1),
 	np.roll(data, -1)]
 )
 
-
-#print(f"Data: {data}")
-#print(f"all_trip: {all_trip}")
-#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"Data: {data}")
-#all_trip = np.stack([np.roll(data, 1),
-#	data,
-#	np.roll(data, -1)]
-#)
-#print(f"all_trip: {all_trip}")
-#print(f"Data: {data}")
-#new_data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"New : {new_data}")
-#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"Data: {data}")
-
-
-#print(np.apply_along_axis(rule_index, 0, all_trip))
-#print(f"New data: {new_data}")
-#print("\n\n\n\n")
-#print(all_trip)
-
-
+# Initialize array that will be loded by matplotlib
 binary_data = np.array(data, dtype=int)
 binary_data = binary_data[np.newaxis, :]
-#print(f"Data: {data}")
-#data = data[np.newaxis, :]
-#print(f"Data: {data}")
-#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"Data: {data}")
-#data = data[np.newaxis, :]
-#print(f"Data: {data}")
-#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"Data: {data}")
-#all_trip = np.stack([np.roll(data, 1),
-#	data,
-#	np.roll(data, -1)]
-#)
-#data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
-#print(f"Data: {data}")
-#binary_data = np.concatenate((binary_data, data), axis=0)
-#binary_data = np.concatenate((binary_data, data), axis=0)
-#binary_data = np.concatenate((binary_data, data), axis=0)
+
+# Run the rule a bunch of times
 cnt = 0
 while cnt < 100:
 	data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
@@ -80,8 +42,8 @@ while cnt < 100:
 	binary_data = np.concatenate((binary_data, data), axis=0)
 	cnt+=1
 
-
+# Plot the result
 plt.imshow(binary_data, cmap='Greys')
 plt.axis("off")
-plt.title("Cellular Automata")
+plt.title(f"Cellular Automata Rule {rule_string} ({rule_number})")
 plt.show()
