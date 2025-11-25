@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import random
 
 rng = np.random.RandomState(42)
-data = rng.randint(0, 2, 20)
+data = rng.randint(0, 2, 500)
 
 #print(f"Data: {data}")
 #print(f"Roll data: {np.roll(data, 1)}")
@@ -32,7 +32,7 @@ binary_data = binary_data[np.newaxis, :]
 
 # Run the rule a bunch of times
 cnt = 0
-while cnt < 100:
+while cnt < 300:
 	data = rule[np.apply_along_axis(rule_index, 0, all_trip)]
 	all_trip = np.stack([np.roll(data, 1),
 		data,
