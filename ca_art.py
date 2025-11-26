@@ -2,19 +2,21 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import random
 
-rng = np.random.RandomState(42)
+rng = np.random.RandomState(5)
 data = rng.randint(0, 2, 500)
 
 #print(f"Data: {data}")
 #print(f"Roll data: {np.roll(data, 1)}")
 
-
-rule_number = 30
+rules = np.random.randint(0, 128, 128)
+rule_number = np.random.choice(rules)
 rule_string = np.binary_repr(rule_number, 8)
 rule = np.array([int(bit) for bit in rule_string])
 
 #print(f"Rule: {rule}")
 
+# Add a comment here. I always blank when I come back after a couple days
+# Just think about a grid 
 def rule_index(state):
 	left_neighbor, cell, right_neighbor = state
 	index = 7 - (4*left_neighbor + 2*cell + right_neighbor)
