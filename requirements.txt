@@ -5,3 +5,6 @@ notebook
 numpy
 matplotlib
 scipy
+
+# Needed qt to run on Ubuntu.
+PyQt6
